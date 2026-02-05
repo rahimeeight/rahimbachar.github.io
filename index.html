@@ -59,11 +59,19 @@
             background: #1a1a1a;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Thin double border effect */
+            border: 2px solid rgba(0, 0, 0, 0.9);
+            box-shadow: 
+                0 0 0 1px rgba(0, 0, 0, 0.8), /* Outer black outline */
+                inset 0 0 0 1px rgba(0, 0, 0, 0.8); /* Inner black outline */
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.7),
+                0 0 0 1px rgba(0, 0, 0, 0.9),
+                inset 0 0 0 1px rgba(0, 0, 0, 0.9);
         }
         
         .card img,
@@ -123,6 +131,18 @@
             position: relative;
         }
         
+        /* Add dim effect to video card */
+        .video-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+            z-index: 1;
+        }
+        
         .youtube-video-container {
             width: 100%;
             height: 100%;
@@ -138,22 +158,28 @@
         
         .youtube-link {
             display: block;
-            padding: 20px;
             text-align: center;
-            color: #c94b4b;
+            color: #ff6b6b;
             text-decoration: none;
-            font-size: 18px;
-            background: rgba(20, 20, 20, 0.95);
+            font-size: 22px;
             transition: all 0.3s ease;
             position: absolute;
-            bottom: 0;
+            bottom: 30px;
+            left: 0;
             width: 100%;
             z-index: 3;
+            padding: 0 20px;
+            text-shadow: 
+                2px 2px 0 #000000,
+                -1px -1px 0 #000000,
+                1px -1px 0 #000000,
+                -1px 1px 0 #000000,
+                1px 1px 0 #000000;
         }
         
         .youtube-link:hover {
-            background: rgba(30, 30, 30, 0.95);
-            color: #ff6b6b;
+            color: #ff9999;
+            transform: translateY(-2px);
         }
         
         .video-title {
@@ -170,8 +196,6 @@
                 -1px 1px 0 #000000,
                 1px 1px 0 #000000;
         }
-        
-        
         
         /* CONTACT SECTION */
         .contact {
@@ -241,13 +265,9 @@
                 left: 20px;
             }
             
-            .play-button {
-                width: 70px;
-                height: 70px;
-            }
-            
-            .play-button i {
-                font-size: 30px;
+            .youtube-link {
+                font-size: 20px;
+                bottom: 25px;
             }
             
             .contact {
@@ -280,18 +300,9 @@
                 font-size: 18px;
             }
             
-            .play-button {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .play-button i {
-                font-size: 24px;
-            }
-            
             .youtube-link {
-                padding: 15px;
-                font-size: 16px;
+                font-size: 18px;
+                bottom: 20px;
             }
             
             .btn {
@@ -307,6 +318,11 @@
             
             .intro-text p {
                 font-size: 16px;
+            }
+            
+            .youtube-link {
+                font-size: 16px;
+                bottom: 15px;
             }
         }
     </style>
@@ -333,7 +349,7 @@
             <div class="intro-text">
                 <p class="main-title">Welcome,</p>
                 <p class="sub-text">I'm Rahim a GAME DEVELOPER<br>
-                <p class="sub-text">Master’s Degree, Previous teacher</p>
+                <p class="sub-text">Master's Degree, Previous teacher</p>
                 
             </div>
         </div>
@@ -344,9 +360,8 @@
                     <!-- YouTube thumbnail as placeholder -->
                     <img src="https://img.youtube.com/vi/osW5Fa1WR7I/maxresdefault.jpg" alt="YouTube Video" class="youtube-placeholder">
                     <!-- <div class="video-title">Game Development Showcase</div>-->
-
+                    <a class="youtube-link" href="https://www.youtube.com/watch?v=osW5Fa1WR7I" target="_blank">Watch on YouTube, Games Showcase</a>
                 </div>
-                <a class="youtube-link" href="https://www.youtube.com/watch?v=osW5Fa1WR7I" target="_blank">Watch on YouTube, Games Showcase</a>
             </div>
 
         </section>
