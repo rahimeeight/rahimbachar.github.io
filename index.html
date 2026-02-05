@@ -6,7 +6,6 @@
     <title>Rahim | Game Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
     <style>
-        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
@@ -20,31 +19,28 @@
             overflow-x: hidden;
         }
         
-        /* HERO VIDEO - STRETCH ALONG WIDTH, DYNAMIC HEIGHT */
         .hero {
             width: 100vw;
             position: relative;
             overflow: hidden;
             background: #000;
+            height: auto;
         }
         
         .hero video {
             width: 100%;
             height: auto;
             min-height: 300px;
-            max-height: 80vh;
             display: block;
-            object-fit: contain;
+            object-fit: cover;
         }
         
-        /* MAIN CONTAINER */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
         
-        /* GRID & CARDS - WIDE RECTANGLE STYLE */
         .grid.two {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -59,18 +55,10 @@
             background: #1a1a1a;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: box-shadow 0.3s ease;
-            /* Thin double border effect */
-            border: 2px solid rgba(0, 0, 0, 0.9);
-            box-shadow: 
-                0 0 0 1px rgba(0, 0, 0, 0.8), /* Outer black outline */
-                inset 0 0 0 1px rgba(0, 0, 0, 0.8); /* Inner black outline */
         }
         
         .card:hover {
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.7),
-                0 0 0 1px rgba(0, 0, 0, 0.9),
-                inset 0 0 0 1px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
         }
         
         .card img,
@@ -81,10 +69,9 @@
             transition: transform 0.5s ease;
         }
         
-        /* INTRO CARD - WIDE RECTANGLE */
         .intro {
             position: relative;
-            height: 350px; /* Wider rectangle */
+            height: 350px;
             cursor: default;
         }
         
@@ -129,9 +116,8 @@
             line-height: 1.4;
         }
         
-        /* YOUTUBE VIDEO CARD - WIDE RECTANGLE */
         .video-card {
-            height: 350px; /* Matching height for consistency */
+            height: 350px;
             background: #000;
             position: relative;
             cursor: pointer;
@@ -141,7 +127,6 @@
             transform: scale(1.05);
         }
         
-        /* Add dim effect to video card */
         .video-card::before {
             content: '';
             position: absolute;
@@ -185,15 +170,11 @@
                 1px -1px 0 #000000,
                 -1px 1px 0 #000000,
                 1px 1px 0 #000000;
+            pointer-events: none;
         }
         
         .youtube-link:hover {
             color: #ff9999;
-        }
-        
-        /* Remove the pointer events from the link so clicking anywhere works */
-        .youtube-link {
-            pointer-events: none;
         }
         
         .video-title {
@@ -211,7 +192,6 @@
                 1px 1px 0 #000000;
         }
         
-        /* CONTACT SECTION */
         .contact {
             display: flex;
             gap: 20px;
@@ -249,10 +229,9 @@
             background: #c94b4b;
         }
         
-        /* MOBILE RESPONSIVE */
         @media (max-width: 900px) {
             .hero video {
-                max-height: 60vh;
+                object-fit: contain;
             }
             
             .grid.two {
@@ -261,7 +240,7 @@
             }
             
             .intro, .video-card {
-                height: 300px; /* Slightly shorter on mobile but still wide rectangle */
+                height: 300px;
             }
             
             .intro-text {
@@ -299,7 +278,8 @@
         
         @media (max-width: 600px) {
             .hero video {
-                max-height: 50vh;
+                object-fit: contain;
+                min-height: 250px;
             }
             
             .intro, .video-card {
@@ -326,6 +306,10 @@
         }
         
         @media (max-width: 400px) {
+            .hero video {
+                min-height: 200px;
+            }
+            
             .intro, .video-card {
                 height: 200px;
             }
@@ -342,8 +326,6 @@
     </style>
 </head>
 <body>
-
-    <!-- HERO VIDEO - FULL WIDTH, DYNAMIC HEIGHT -->
     <section class="hero">
         <video autoplay muted loop playsinline>
             <source src="assets/videos/Cover.mp4" type="video/mp4">
@@ -351,80 +333,46 @@
         </video>
     </section>
 
-    <!-- MAIN CONTENT -->
     <main class="container">
-
-        <!-- TOP CARDS -->
         <section class="grid two">
-
-            <!-- INTRO CARD -->
-        <div class="card intro">
-            <img src="assets/images/RahimSetup.png" alt="Rahim">
-            <div class="intro-text">
-                <p class="main-title">Welcome,</p>
-                <p class="sub-text">I'm Rahim a GAME DEVELOPER<br>
-                <p class="sub-text">Master's Degree, Previous teacher</p>
-                
+            <div class="card intro">
+                <img src="assets/images/RahimSetup.png" alt="Rahim">
+                <div class="intro-text">
+                    <p class="main-title">Welcome,</p>
+                    <p class="sub-text">I'm Rahim a GAME DEVELOPER<br>
+                    <p class="sub-text">Master's Degree, Previous teacher</p>
+                </div>
             </div>
-        </div>
 
-            <!-- YOUTUBE VIDEO CARD - Now clickable anywhere -->
             <a href="https://www.youtube.com/watch?v=osW5Fa1WR7I" target="_blank" class="card video-card">
                 <div class="youtube-video-container">
-                    <!-- YouTube thumbnail as placeholder -->
                     <img src="https://img.youtube.com/vi/osW5Fa1WR7I/maxresdefault.jpg" alt="YouTube Video" class="youtube-placeholder">
-                    <!-- <div class="video-title">Game Development Showcase</div>-->
                     <div class="youtube-link">Watch on YouTube, Games Showcase</div>
                 </div>
             </a>
-
         </section>
 
-        <!-- CONTACT BUTTONS -->
         <section class="contact">
             <a href="https://www.linkedin.com/in/rahimbachar" target="_blank" class="btn outline">LinkedIn</a>
         </section>
-
     </main>
 
     <script>
-        // Hero video scaling - ensures full width display
         function adjustHeroVideo() {
             const heroVideo = document.querySelector('.hero video');
-            const container = document.querySelector('.container');
-            
-            // Get the video's aspect ratio (3840/840 = 4.571)
-            const videoAspectRatio = 3840 / 840; // 4.571
-            
-            // Calculate the available width
-            const availableWidth = window.innerWidth;
-            
-            // Calculate height based on width and aspect ratio
-            const calculatedHeight = availableWidth / videoAspectRatio;
-            
-            // Set max-height to prevent it from being too tall
-            heroVideo.style.height = calculatedHeight + 'px';
-            heroVideo.style.maxHeight = '80vh';
-            
-            // Ensure video is visible in viewport
-            heroVideo.style.objectFit = 'cover';
+            heroVideo.style.width = '100%';
+            heroVideo.style.height = 'auto';
+            heroVideo.style.objectFit = 'contain';
         }
         
-        // Adjust on load and resize
         window.addEventListener('load', adjustHeroVideo);
         window.addEventListener('resize', adjustHeroVideo);
         
-        // Initial adjustment
-        adjustHeroVideo();
-        
-        // Add click handler for the video card (redundant since it's already a link)
         document.querySelector('.video-card').addEventListener('click', function(e) {
-            // If user clicks the link text specifically, let the default behavior happen
             if (!e.target.classList.contains('youtube-link')) {
                 window.open('https://www.youtube.com/watch?v=osW5Fa1WR7I', '_blank');
             }
         });
     </script>
-
 </body>
 </html>
