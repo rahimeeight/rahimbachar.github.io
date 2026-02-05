@@ -58,7 +58,7 @@
             overflow: hidden;
             background: #1a1a1a;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease;
             /* Thin double border effect */
             border: 2px solid rgba(0, 0, 0, 0.9);
             box-shadow: 
@@ -67,9 +67,8 @@
         }
         
         .card:hover {
-            transform: translateY(-5px);
             box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.7),
+                0 10px 30px rgba(0, 0, 0, 0.7),
                 0 0 0 1px rgba(0, 0, 0, 0.9),
                 inset 0 0 0 1px rgba(0, 0, 0, 0.9);
         }
@@ -79,12 +78,18 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
         /* INTRO CARD - WIDE RECTANGLE */
         .intro {
             position: relative;
             height: 350px; /* Wider rectangle */
+            cursor: default;
+        }
+        
+        .intro:hover img {
+            transform: scale(1.05);
         }
         
         .intro::before {
@@ -129,6 +134,11 @@
             height: 350px; /* Matching height for consistency */
             background: #000;
             position: relative;
+            cursor: pointer;
+        }
+        
+        .video-card:hover .youtube-placeholder {
+            transform: scale(1.05);
         }
         
         /* Add dim effect to video card */
@@ -179,7 +189,11 @@
         
         .youtube-link:hover {
             color: #ff9999;
-            transform: translateY(-2px);
+        }
+        
+        /* Remove the pointer events from the link so clicking anywhere works */
+        .youtube-link {
+            pointer-events: none;
         }
         
         .video-title {
@@ -354,15 +368,15 @@
             </div>
         </div>
 
-            <!-- YOUTUBE VIDEO CARD -->
-            <div class="card video-card">
+            <!-- YOUTUBE VIDEO CARD - Now clickable anywhere -->
+            <a href="https://www.youtube.com/watch?v=osW5Fa1WR7I" target="_blank" class="card video-card">
                 <div class="youtube-video-container">
                     <!-- YouTube thumbnail as placeholder -->
                     <img src="https://img.youtube.com/vi/osW5Fa1WR7I/maxresdefault.jpg" alt="YouTube Video" class="youtube-placeholder">
                     <!-- <div class="video-title">Game Development Showcase</div>-->
-                    <a class="youtube-link" href="https://www.youtube.com/watch?v=osW5Fa1WR7I" target="_blank">Watch on YouTube, Games Showcase</a>
+                    <div class="youtube-link">Watch on YouTube, Games Showcase</div>
                 </div>
-            </div>
+            </a>
 
         </section>
 
@@ -402,6 +416,14 @@
         
         // Initial adjustment
         adjustHeroVideo();
+        
+        // Add click handler for the video card (redundant since it's already a link)
+        document.querySelector('.video-card').addEventListener('click', function(e) {
+            // If user clicks the link text specifically, let the default behavior happen
+            if (!e.target.classList.contains('youtube-link')) {
+                window.open('https://www.youtube.com/watch?v=osW5Fa1WR7I', '_blank');
+            }
+        });
     </script>
 
 </body>
